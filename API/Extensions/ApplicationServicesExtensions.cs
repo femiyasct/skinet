@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions
 {
-    public static class ApplicationsservicesExtensions
+    public static class ApplicationServicesExtensions
     {
-        public static IServiceCollection AddApplicationservices(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -36,9 +36,14 @@ services.Configure<ApiBehaviorOptions>(options =>
         return new BadRequestObjectResult(errorResponse);
     };
 });
-
-            return services;
-        }
-      
+services.AddCors(opt =>
+{
+opt.AddPolicy("CorsPolicy", policy => 
+    {
+        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
+    });
+});
+        return services;
+        }      
     }
 }

@@ -4,13 +4,14 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddControllers();
+builder.Services.AddApplicationServices(builder.Configuration);
 // Add services to the container.
 
 var app = builder.Build();
 
-builder.Services.AddControllers();
-builder.Services.AddApplicationservices(builder.Configuration);
+
+
 
 // Configure the HTTP request pipeline.
 app.UseMiddleware<ExceptionMiddleware>();
@@ -20,6 +21,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseStaticFiles();
+app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
