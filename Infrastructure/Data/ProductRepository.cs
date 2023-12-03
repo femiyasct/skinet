@@ -1,5 +1,6 @@
 using Core.Entities;
 using Core.Interfaces;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
@@ -20,16 +21,16 @@ namespace Infrastructure.Data
         public async Task<Product> GetProductByIdAsync(int id)
         {
             return await _context.Products
-            .Include(p => p.ProductBrand)
             .Include(p => p.ProductType)
-            .FirstOrDefaultAsync(p => p.Id == id);
+            .Include(p => p.ProductBrand)            
+            .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<IReadOnlyList<Product>> GetProductsAsync()
         {            
             return await _context.Products
-            .Include(p => p.ProductBrand)
             .Include(p => p.ProductType)
+            .Include(p => p.ProductBrand)            
             .ToListAsync();
         }        
 

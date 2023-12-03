@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from './shared/models/product';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,7 @@ import { Product } from './shared/models/product';
 })
 export class AppComponent implements OnInit{
   title = 'Skinet';
+    
    constructor () {}
 
     ngOnInit(): void {        
