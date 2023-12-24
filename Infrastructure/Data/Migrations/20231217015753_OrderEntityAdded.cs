@@ -12,7 +12,7 @@ namespace Infrastructure.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DeliveryMethod",
+                name: "DeliveryMethods",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -28,7 +28,7 @@ namespace Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false),
@@ -51,12 +51,12 @@ namespace Infrastructure.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Order_DeliveryMethod_DeliveryMethodId",
                         column: x => x.DeliveryMethodId,
-                        principalTable: "DeliveryMethod",
+                        principalTable: "DeliveryMethods",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItem",
+                name: "OrderItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -74,19 +74,19 @@ namespace Infrastructure.Data.Migrations
                     table.ForeignKey(
                         name: "FK_OrderItem_Order_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "Order",
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Order_DeliveryMethodId",
-                table: "Order",
+                table: "Orders",
                 column: "DeliveryMethodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItem_OrderId",
-                table: "OrderItem",
+                table: "OrderItems",
                 column: "OrderId");
         }
 
@@ -100,7 +100,7 @@ namespace Infrastructure.Data.Migrations
                 name: "Order");
 
             migrationBuilder.DropTable(
-                name: "DeliveryMethod");
+                name: "DeliveryMethods");
         }
     }
 }

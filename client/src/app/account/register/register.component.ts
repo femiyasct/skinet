@@ -35,7 +35,7 @@ validateEmailNotTaken(): AsyncValidatorFn {
       debounceTime(1000),
       take(1),
       switchMap(() => {
-        return this.accountService.checkEmailExixsts(control.value).pipe(
+        return this.accountService.checkEmailExists(control.value).pipe(
           map(result => result ? {emailExists: true} : null),
           finalize(() => control.markAsTouched())
         )

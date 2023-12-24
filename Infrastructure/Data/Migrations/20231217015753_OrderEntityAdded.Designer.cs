@@ -40,7 +40,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DeliveryMethod");
+                    b.ToTable("DeliveryMethods");
                 });
 
             modelBuilder.Entity("Core.Entities.OrderAggregate.Order", b =>
@@ -72,7 +72,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasIndex("DeliveryMethodId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Core.Entities.OrderAggregate.OrderItem", b =>
@@ -94,7 +94,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItem");
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
